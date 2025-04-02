@@ -1,4 +1,6 @@
-import { Tabs } from '@mantine/core'
+"use client"
+
+import { Tabs, TabsList, TabsPanel, TabsTab } from '@mantine/core'
 import React from 'react'
 import AccordionItems from './AccordionItems'
 
@@ -83,35 +85,35 @@ const kidsData = [
   },
 ]
 
-export default function DrawerContent() {
+export default function MenuContent() {
   return (
     <div>
         <Tabs defaultValue="WOMEN" id='tabs-drawer-burger'>
-      <Tabs.List style={{ display:'flex', justifyContent: 'space-between' }}>
-        <Tabs.Tab value="WOMEN">
+      <TabsList style={{ display:'flex', justifyContent: 'space-between' }}>
+        <TabsTab value="WOMEN">
           WOMEN
-        </Tabs.Tab>
+        </TabsTab>
 
-        <Tabs.Tab value="MEN">
+        <TabsTab value="MEN">
           MEN
-        </Tabs.Tab>
+        </TabsTab>
 
-        <Tabs.Tab value="KIDS">
+        <TabsTab value="KIDS">
           KIDS
-        </Tabs.Tab>
-      </Tabs.List>
+        </TabsTab>
+      </TabsList>
 
-      <Tabs.Panel value="WOMEN">
-        <AccordionItems dataAccordion={womenData} />
-      </Tabs.Panel>
+      <TabsPanel value="WOMEN">
+        <AccordionItems key={1} dataAccordion={womenData} />
+      </TabsPanel>
 
-      <Tabs.Panel value="MEN">
-        <AccordionItems dataAccordion={menData} />
-      </Tabs.Panel>
+      <TabsPanel value="MEN">
+        <AccordionItems key={2} dataAccordion={menData} />
+      </TabsPanel>
 
-      <Tabs.Panel value="KIDS">
-        <AccordionItems dataAccordion={kidsData} />
-      </Tabs.Panel>
+      <TabsPanel value="KIDS">
+        <AccordionItems key={4} dataAccordion={kidsData} />
+      </TabsPanel>
     </Tabs>
     </div>
   )

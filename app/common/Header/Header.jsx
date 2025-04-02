@@ -1,11 +1,13 @@
+"use client"
+
 import React from 'react'
 import './Header.css'
 import { IconHeart, IconSearch, IconShoppingBag, IconUser } from '@tabler/icons-react'
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { Burger, Image } from '@mantine/core';
-import imageLogo from '../../../assets/logo_image.png'
-import { Drawer, Button } from '@mantine/core';
-import DrawerContent from './DrawerContent';
+import { Burger, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, DrawerRoot, Image } from '@mantine/core';
+import imageLogo from '../../../public/logo_image.png'
+import { Button } from '@mantine/core';
+import MenuContent from './MenuContent';
 
 export default function Header() {
   const [opened, { toggle, open, close }] = useDisclosure();
@@ -19,27 +21,27 @@ export default function Header() {
                   <div className='burger-container-header'>
                   <>
                   <Button variant="transparent" onClick={open}>
-                    <Burger lineSize={1} opened={opened} onClick={toggle} aria-label="Toggle navigation" />
+                    <Burger component='div' lineSize={1} opened={opened} onClick={toggle} aria-label="Toggle navigation" />
                   </Button>
-                  <Drawer.Root
+                  <DrawerRoot
                     offset={8} 
                     opened={opened} 
                     onClose={close} 
-                    title="Authentication"
+                    // title="Authentication"
                     size={isSmallScreen ? '70%' : '40%'}
-                    overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
+                    // overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
                   >
-                    <Drawer.Overlay />
-                    <Drawer.Content>
-                      <Drawer.Header>  
-                        <Drawer.CloseButton style={{ marginLeft: 'unset' }} />
+                    <DrawerOverlay />
+                    <DrawerContent>
+                      <DrawerHeader>  
+                        <DrawerCloseButton style={{ marginLeft: 'unset' }} />
                         {/* <Drawer.Title></Drawer.Title> */}
-                      </Drawer.Header>
-                      <Drawer.Body>
-                        <DrawerContent/>
-                      </Drawer.Body>
-                    </Drawer.Content>
-                  </Drawer.Root>
+                      </DrawerHeader>
+                      <DrawerBody>
+                        <MenuContent/>
+                      </DrawerBody>
+                    </DrawerContent>
+                  </DrawerRoot>
                   </>
                   </div>
                   <div>
