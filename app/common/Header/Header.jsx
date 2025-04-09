@@ -5,9 +5,9 @@ import './Header.css'
 import { IconHeart, IconSearch, IconShoppingBag, IconUser } from '@tabler/icons-react'
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { Burger, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, DrawerRoot, Image } from '@mantine/core';
-import imageLogo from '../../../public/logo_image.png'
 import { Button } from '@mantine/core';
 import MenuContent from './MenuContent';
+import Link from 'next/link';
 
 export default function Header() {
   const [opened, { toggle, open, close }] = useDisclosure();
@@ -45,11 +45,13 @@ export default function Header() {
                   </>
                   </div>
                   <div>
-                    <Image
-                      src={imageLogo}
-                      fit={true}
-                      className='image-logo-header'
-                    />
+                    <Link href={'/'}>
+                      <Image
+                        src={'https://raw.githubusercontent.com/CMroa/Schicki/refs/heads/main/public/logo_image.png'}
+                        fit={true}
+                        className='image-logo-header'
+                      />
+                    </Link>
                   </div>
                   <div className='icons-container-header'>
                     <IconHeart stroke={1} />
